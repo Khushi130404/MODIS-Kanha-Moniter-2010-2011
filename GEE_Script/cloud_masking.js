@@ -1,6 +1,8 @@
-// Cloud masking using StateQA band
+// ============================
+// CLOUD MASK (MOD09A1 v6)
+// ============================
 function maskMODISClouds(image) {
-  var QA = image.select("StateQA");
-  var cloudMask = QA.bitwiseAnd(3).eq(0); // 0 = clear
-  return image.updateMask(cloudMask);
+  var qa = image.select("StateQA");
+  var cloudFree = qa.bitwiseAnd(3).eq(0); // bits 0–1
+  return image.updateMask(cloudFree);
 }
