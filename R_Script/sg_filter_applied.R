@@ -61,7 +61,7 @@ for(file in csv_files){
   ndvi$ndvi_filled <- zoo::na.locf(ndvi$ndvi_filled, fromLast=TRUE)
   
   # ---- Apply Savitzky–Golay filter
-  window_size <- 9
+  window_size <- 13
   poly_order  <- 2
   
   ndvi$ndvi_sg <- signal::sgolayfilt(
